@@ -1,0 +1,9 @@
+<p> Download:</p>
+<%= link_to "CSV", yaritori_path(format: "csv")%>
+<%= link_to "Excel", yaritori_path(format: "xls") %>
+<p>
+  <%= form_tag import_yaritori_path, multipart: true do%>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import"%>
+  <% end %>
+</p>

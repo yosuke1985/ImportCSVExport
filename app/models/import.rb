@@ -1,7 +1,12 @@
 class Import < ActiveRecord::Base
-  COLUMN = ["id","name","company","email","created_at", "updated_at"]
+  validates :name, uniqueness: true
+  validates :email, uniqueness:true
+  validates :shopname, uniqueness:true
+
+  COLUMN = ["id","shopname","location","tel","fax","postalcode","name","company","email","created_at", "updated_at"]
 
   def self.import(file)
+
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
